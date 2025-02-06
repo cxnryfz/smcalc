@@ -1,0 +1,399 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+  background: #f0f0f0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* First Time Setup */
+#first-time-setup {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.setup-content input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+}
+
+#done-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+/* Calculator */
+#calculator {
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 300px;
+}
+
+.calc-display input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  text-align: right;
+  border: 1px solid #eee;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.calc-btn {
+  padding: 1rem;
+  font-size: 1.25rem;
+  border: none;
+  background: #f8f9fa;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.calc-btn:hover {
+  background: #e9ecef;
+}
+
+.operator {
+  background: #007bff;
+  color: white;
+}
+
+.clear {
+  background: #dc3545;
+  color: white;
+}
+
+/* Calculator Scientific Mode */
+.calc-mode-toggle {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.calc-mode-toggle button {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  background: #f8f9fa;
+  cursor: pointer;
+}
+
+.calc-mode-toggle button.mode-active {
+  background: #007bff;
+  color: white;
+}
+
+.scientific-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* XenOS UI */
+#xen-os {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #2266dd;
+  color: white;
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.xen-squares {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.xen-square {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  animation: float 10s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.status-bar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.app-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.app-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.app-icon:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.app-icon.killswitch {
+  background: rgba(255, 0, 0, 0.3);
+}
+
+.app-icon span {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Loading Screen */
+#loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  z-index: 1000;
+}
+
+.loading-text {
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #333;
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Lightswitch Frame */
+#lightswitch-frame {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  animation: frameOpen 0.3s ease-out;
+}
+
+@keyframes frameOpen {
+  from {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.frame-header {
+  padding: 0.5rem;
+  background: #f8f9fa;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.close-frame-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+}
+
+#lightswitch-frame iframe {
+  width: 100%;
+  height: calc(100% - 40px);
+}
+
+/* App Frame Fullscreen */
+.app-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 10;
+  animation: frameOpen 0.3s ease-out;
+}
+
+.app-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Bottom App Bar */
+.bottom-app-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem;
+  border-radius: 1rem 1rem 0 0;
+  display: flex;
+  gap: 1rem;
+  z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.bottom-hover-area {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  z-index: 99;
+}
+
+.bottom-hover-area:hover + .bottom-app-bar,
+.bottom-app-bar:hover {
+  transform: translateX(-50%) translateY(0);
+}
+
+.app-bar-btn {
+  background: none;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  transition: background 0.2s;
+}
+
+.app-bar-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.app-bar-btn.killswitch {
+  color: #ff4444;
+}
+
+/* Game Menu */
+#game-menu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.game-card {
+  background: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+}
+
+.game-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.game-card span {
+  display: block;
+  font-size: 1.1rem;
+  color: #333;
+}

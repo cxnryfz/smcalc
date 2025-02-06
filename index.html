@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="first-time-setup" class="hidden">
+    <div class="setup-content">
+      <h2>Welcome to Smart Calculator</h2>
+      <p>Please set your secret code to access special features:</p>
+      <input type="password" id="secret-code-setup" placeholder="Enter secret code">
+      <button id="done-btn">Done</button>
+    </div>
+  </div>
+
+  <div id="calculator" class="hidden">
+    <div class="calc-display">
+      <input type="text" id="display" readonly>
+    </div>
+    <div class="calc-mode-toggle">
+      <button id="basic-mode" class="mode-active">Basic</button>
+      <button id="scientific-mode">Scientific</button>
+    </div>
+    <div class="calc-buttons basic-buttons">
+      <button class="calc-btn">7</button>
+      <button class="calc-btn">8</button>
+      <button class="calc-btn">9</button>
+      <button class="calc-btn operator">÷</button>
+      <button class="calc-btn">4</button>
+      <button class="calc-btn">5</button>
+      <button class="calc-btn">6</button>
+      <button class="calc-btn operator">×</button>
+      <button class="calc-btn">1</button>
+      <button class="calc-btn">2</button>
+      <button class="calc-btn">3</button>
+      <button class="calc-btn operator">-</button>
+      <button class="calc-btn">0</button>
+      <button class="calc-btn">.</button>
+      <button class="calc-btn">=</button>
+      <button class="calc-btn operator">+</button>
+      <button class="calc-btn clear">C</button>
+    </div>
+    <div class="calc-buttons scientific-buttons hidden">
+      <button class="calc-btn">sin</button>
+      <button class="calc-btn">cos</button>
+      <button class="calc-btn">tan</button>
+      <button class="calc-btn">π</button>
+      <button class="calc-btn">√</button>
+      <button class="calc-btn">^</button>
+      <button class="calc-btn">(</button>
+      <button class="calc-btn">)</button>
+      <button class="calc-btn">log</button>
+      <button class="calc-btn">ln</button>
+      <button class="calc-btn">e</button>
+      <button class="calc-btn">%</button>
+    </div>
+  </div>
+
+  <div id="loading-screen" class="hidden">
+    <div class="loading-text">Booting Into XenOS</div>
+    <div class="loading-spinner"></div>
+  </div>
+
+  <div id="xen-os" class="hidden">
+    <div class="xen-squares"></div>
+    <div class="status-bar">
+      <span class="time"></span>
+    </div>
+
+    <div class="app-grid">
+      <div class="app-icon lightswitch-app">
+        <svg viewBox="0 0 24 24" width="48" height="48">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7zM9 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H9v1z" fill="currentColor"/>
+        </svg>
+        <span>LightSwitch</span>
+      </div>
+      <div class="app-icon playground-app">
+        <svg viewBox="0 0 24 24" width="48" height="48">
+          <path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6 6h4v-4h-4v4zm-6-6h4v-4h-4v4zm6-6v4h4V8h-4zm6 6h4v-4h-4v4z" fill="currentColor"/>
+        </svg>
+        <span>Playground</span>
+      </div>
+      <div class="app-icon killswitch">
+        <svg viewBox="0 0 24 24" width="48" height="48">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="white"/>
+        </svg>
+        <span>KillSwitch</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="game-menu" class="hidden">
+    <div class="game-grid">
+      <div class="game-card" data-game="slope">
+        <img src="https://www.gamenora.com/upload/games/thumbnails/Slope.webp" alt="Slope">
+        <span>Slope</span>
+      </div>
+      <div class="game-card" data-game="slope-multi">
+        <img src="https://www.gamenora.com/upload/games/thumbnails/Slope%20Multiplayer.webp" alt="Slope Multiplayer">
+        <span>Slope Multiplayer</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
